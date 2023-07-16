@@ -2,7 +2,7 @@ import './index.css';
 
 function App() {
   return (
-    <h1 className='bg-red-300'>filmkhor</h1>
+    <h1 className='bg-red-300'>فیلمخور</h1>
   );
 }
 
