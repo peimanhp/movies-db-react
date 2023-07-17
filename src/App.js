@@ -5,27 +5,27 @@ import http from "./services/httpService";
 import "./index.css";
 
 function App() {
-  const [movies, setMovies] = useState([]);
+  const [nowPlayingmovies, setNowPlayingMovies] = useState([]);
 
   useEffect(() => {
-    const fetchMovies = async () => {
+    const fetchNowPlayingMovies = async () => {
       try {
         const response = await http.get(`/3/movie/now_playing`);
-        setMovies(response.data);
+        setNowPlayingMovies(response.data.results);
       } catch (error) {
         console.log(error);
       }
     };
 
-    fetchMovies();
-  }, []);
+    fetchNowPlayingMovies();
 
-  console.log(movies);
+  }, []);  
+  
 
   return (
     <>
       <NavBar />
-      <MovieSlider />
+      <MovieSlider movies={nowPlayingmovies} />
     </>
   );
 }
