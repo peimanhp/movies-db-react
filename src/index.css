@@ -13,13 +13,55 @@
 
 * {
   font-family: IRANSansXV !important;
+  direction: rtl;
+  font-size: 16px;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  color: white;
 }
 
 body {
-  /* background-color: var(--main-bg-color); */
+  background-color: var(--main-bg-color);
   overflow-x: hidden;  
+}
+
+.movie-cards {
+  padding:0 0.5em;
+  text-align: center;
+}
+
+.posters {
+  border-radius: 0.4em;
+  margin-bottom: 0.7em;
+}
+
+.react-multiple-carousel__arrow{
+  background-color: #555;
+}
+
+.slider-title {
+  font-size: 1.2em;
+  font-weight: 700;
+  margin-bottom: 1em;
+  margin-right: 0.5em;
+}
+
+.movie-slider {
+  margin: 3em;
+}
+
+
+
+
+
+
+
+/* media queries */
+
+@media only screen and (max-width: 600px) {
+  .movie-slider {
+  margin: 0.5em;
+}
 }
 

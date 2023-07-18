@@ -25,7 +25,7 @@ function App() {
   return (
     <>
       <NavBar />
-      <MovieSlider movies={nowPlayingmovies} />
+      <MovieSlider title={'فیلم های در حال اکران'} movies={nowPlayingmovies} />
     </>
   );
 }
