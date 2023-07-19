@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
@@ -27,17 +27,28 @@ const responsive = {
 };
 
 const MovieSlider = (props) => {
+  const srcollRef = useRef(null);
+
+  const handleScroll = () => {
+    srcollRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleShowMovieInfo = (movie) => {
+    if (movie === props.selectedMovie)
+      props.setShowMoviesInfo(!props.showMovieInfo);
+    else props.setShowMoviesInfo(true);
+    props.setSelectedMovie(movie);
+  };
+
   return (
-    <div className="movie-slider">
+    <div ref={srcollRef} className="movie-slider">
       <h1 className="slider-title">{props.title}</h1>
       <Carousel rtl={true} itemClass={"movie-cards"} responsive={responsive}>
         {props.movies.map((movie) => (
           <button
             onClick={() => {
-              if (movie === props.selectedMovie)
-                props.setShowMoviesInfo(!props.showMovieInfo);
-              else props.setShowMoviesInfo(true);
-              props.setSelectedMovie(movie);
+              handleScroll();
+              handleShowMovieInfo(movie);
               console.log(movie);
             }}
             key={movie.id}
@@ -47,7 +58,7 @@ const MovieSlider = (props) => {
               src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
               alt={movie.title}
             />
-            {movie.title}
+            {movie.original_title || movie.original_name}
           </button>
         ))}
       </Carousel>

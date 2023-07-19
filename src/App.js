@@ -7,14 +7,23 @@ import "./index.css";
 
 function App() {
   const [nowPlayingMovies, setNowPlayingMovies] = useState([]);
+  const [popularMovies, setPopularMovies] = useState([]);
+  const [todaySeries, setTodaySeries] = useState([]);
   const [showMovieInfo, setShowMoviesInfo] = useState(false);
   const [selectedMovie, setSelectedMovie] = useState({});
+  
 
   useEffect(() => {
     const fetchNowPlayingMovies = async () => {
       try {
-        const response = await http.get(`/3/movie/now_playing`);
-        setNowPlayingMovies(response.data.results);
+        const nowPlaying = await http.get(`/3/movie/now_playing`);
+        setNowPlayingMovies(nowPlaying.data.results);
+
+        const airingToday = await http.get(`3/tv/airing_today`);
+        setTodaySeries(airingToday.data.results);
+
+        const popular = await http.get(`/3/movie/popular`);
+        setPopularMovies(popular.data.results);
       } catch (error) {
         console.log(error);
       }
@@ -32,9 +41,33 @@ function App() {
         showMovieInfo={showMovieInfo}
         setShowMoviesInfo={setShowMoviesInfo}
         setSelectedMovie={setSelectedMovie}
-        selectedMovie={selectedMovie}
+        selectedMovie={selectedMovie}        
       />
-      {showMovieInfo ? <MovieInfo selectedMovie={selectedMovie} /> : null}
+      {showMovieInfo && nowPlayingMovies.includes(selectedMovie) ? (
+        <MovieInfo selectedMovie={selectedMovie} />
+      ) : null}
+      <MovieSlider
+        title={"سریالهای پخش امروز"}
+        movies={todaySeries}
+        showMovieInfo={showMovieInfo}
+        setShowMoviesInfo={setShowMoviesInfo}
+        setSelectedMovie={setSelectedMovie}
+        selectedMovie={selectedMovie}        
+      />
+      {showMovieInfo && todaySeries.includes(selectedMovie) ? (
+        <MovieInfo selectedMovie={selectedMovie} />
+      ) : null}
+      <MovieSlider
+        title={"فیلم محبوب"}
+        movies={popularMovies}
+        showMovieInfo={showMovieInfo}
+        setShowMoviesInfo={setShowMoviesInfo}
+        setSelectedMovie={setSelectedMovie}
+        selectedMovie={selectedMovie}        
+      />
+      {showMovieInfo && popularMovies.includes(selectedMovie) ? (
+        <MovieInfo selectedMovie={selectedMovie} />
+      ) : null}
     </>
   );
 }
