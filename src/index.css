@@ -13,7 +13,6 @@
 
 * {
   font-family: IRANSansXV !important;
-  direction: rtl;
   font-size: 16px;
   box-sizing: border-box;
   margin: 0;
@@ -23,12 +22,13 @@
 
 body {
   background-color: var(--main-bg-color);
-  overflow-x: hidden;  
+  overflow-x: hidden;
 }
 
 .movie-cards {
-  padding:0 0.5em;
+  padding: 0 0.5em;
   text-align: center;
+  border: none;
 }
 
 .posters {
@@ -36,11 +36,12 @@ body {
   margin-bottom: 0.7em;
 }
 
-.react-multiple-carousel__arrow{
+.react-multiple-carousel__arrow {
   background-color: #555;
 }
 
 .slider-title {
+  direction: rtl;
   font-size: 1.2em;
   font-weight: 700;
   margin-bottom: 1em;
@@ -51,17 +52,59 @@ body {
   margin: 3em;
 }
 
+@keyframes wipe-in {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: 520px;
+    opacity: 1;
+  }
+}
 
+@keyframes wipe-out {
+  from {
+    height: 520px;
+    opacity: 1;
+  }
+  to {
+    height: 0;
+    opacity: 0;
+  }
+}
 
+.movie-info-container {
+  display: flex;
+  align-items: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 2em;
+  height: 520px;
+  transform-origin: 50% 0;
+  animation: wipe-in 0.3s ease-in;
+}
 
+.movie-details {
+  border-radius: 1em;
+  padding: 3em;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+}
 
+.movie-details h2 {
+  font-weight: 900;
+  font-size: 1.3em;
+}
 
+.movie-details h3 {
+  font-weight: 800;
+}
 
 /* media queries */
 
 @media only screen and (max-width: 600px) {
   .movie-slider {
-  margin: 0.5em;
+    margin: 0.5em;
+  }
 }
-}
-

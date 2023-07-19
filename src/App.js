@@ -1,11 +1,14 @@
-import NavBar from "./components/NavBar";
-import MovieSlider from "./components/MovieSlider";
 import { useEffect, useState } from "react";
 import http from "./services/httpService";
+import NavBar from "./components/NavBar";
+import MovieSlider from "./components/MovieSlider";
+import MovieInfo from "./components/MovieInfo";
 import "./index.css";
 
 function App() {
-  const [nowPlayingmovies, setNowPlayingMovies] = useState([]);
+  const [nowPlayingMovies, setNowPlayingMovies] = useState([]);
+  const [showMovieInfo, setShowMoviesInfo] = useState(false);
+  const [selectedMovie, setSelectedMovie] = useState({});
 
   useEffect(() => {
     const fetchNowPlayingMovies = async () => {
@@ -18,14 +21,20 @@ function App() {
     };
 
     fetchNowPlayingMovies();
-
-  }, []);  
-  
+  }, []);
 
   return (
     <>
       <NavBar />
-      <MovieSlider title={'فیلم های در حال اکران'} movies={nowPlayingmovies} />
+      <MovieSlider
+        title={"فیلم های در حال اکران"}
+        movies={nowPlayingMovies}
+        showMovieInfo={showMovieInfo}
+        setShowMoviesInfo={setShowMoviesInfo}
+        setSelectedMovie={setSelectedMovie}
+        selectedMovie={selectedMovie}
+      />
+      {showMovieInfo ? <MovieInfo selectedMovie={selectedMovie} /> : null}
     </>
   );
 }

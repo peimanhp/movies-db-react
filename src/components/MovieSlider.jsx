@@ -2,7 +2,6 @@ import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
@@ -28,20 +27,28 @@ const responsive = {
 };
 
 const MovieSlider = (props) => {
- 
   return (
     <div className="movie-slider">
       <h1 className="slider-title">{props.title}</h1>
       <Carousel rtl={true} itemClass={"movie-cards"} responsive={responsive}>
-        {props.movies.map((m) => (
-          <div key={m.id}>
+        {props.movies.map((movie) => (
+          <button
+            onClick={() => {
+              if (movie === props.selectedMovie)
+                props.setShowMoviesInfo(!props.showMovieInfo);
+              else props.setShowMoviesInfo(true);
+              props.setSelectedMovie(movie);
+              console.log(movie);
+            }}
+            key={movie.id}
+          >
             <img
               className="posters"
-              src={`https://image.tmdb.org/t/p/original${m.poster_path}`}
-              alt={m.title}
+              src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+              alt={movie.title}
             />
-            {m.title}
-          </div>
+            {movie.title}
+          </button>
         ))}
       </Carousel>
     </div>
