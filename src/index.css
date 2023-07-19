@@ -58,14 +58,14 @@ body {
     opacity: 0;
   }
   to {
-    height: 520px;
+    height: 400px;
     opacity: 1;
   }
 }
 
 @keyframes wipe-out {
   from {
-    height: 520px;
+    height: 400px;
     opacity: 1;
   }
   to {
@@ -77,19 +77,28 @@ body {
 .movie-info-container {
   display: flex;
   align-items: center;
-  background-size: cover;
+  background-position: right;
+  background-size: contain;
   background-repeat: no-repeat;
+  background-color: #202020;
+ 
   padding: 2em;
-  height: 520px;
+  height: 400px;
   transform-origin: 50% 0;
   animation: wipe-in 0.3s ease-in;
+}
+
+.backdrop-image {
+ -webkit-mask-image: linear-gradient(to right, transparent 3%, black 30%);
+  mask-image: linear-gradient(to right, transparent 3%, black 30%);
+  height: 400px;
 }
 
 .movie-details {
   border-radius: 1em;
   padding: 3em;
   background-color: rgba(0, 0, 0, 0.5);
-  width: 100%;
+  width: 80%;
 }
 
 .movie-details h2 {

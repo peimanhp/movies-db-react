@@ -58,7 +58,7 @@ function App() {
         <MovieInfo selectedMovie={selectedMovie} />
       ) : null}
       <MovieSlider
-        title={"فیلم محبوب"}
+        title={"فیلم های محبوب"}
         movies={popularMovies}
         showMovieInfo={showMovieInfo}
         setShowMoviesInfo={setShowMoviesInfo}
