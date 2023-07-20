@@ -8,9 +8,9 @@ function MovieInfo({ selectedMovie}) {
       //   backgroundImage: `url(https://image.tmdb.org/t/p/original${selectedMovie.backdrop_path})`,
       // }}
     >
-      <div className='movie-info-texts'>
+      
         <div className="movie-details">
-          <h2>{selectedMovie.title}</h2>
+          <h2>{selectedMovie.title || selectedMovie.name}</h2>
           <br />
           <h3>
             Rating: {selectedMovie.vote_average} ({selectedMovie.vote_count}{" "}
@@ -19,8 +19,10 @@ function MovieInfo({ selectedMovie}) {
           <br />
           <p>Summary: {selectedMovie.overview}</p>
         </div>
-      </div>
-      <img className='backdrop-image' src={`https://image.tmdb.org/t/p/original${selectedMovie.backdrop_path}`}/>
+      <img
+        className="backdrop-image"
+        src={`https://image.tmdb.org/t/p/original${selectedMovie.backdrop_path}`}
+      />
     </div>
   );
 }
