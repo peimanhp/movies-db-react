@@ -10,8 +10,15 @@ export function LoginProvider({ children }) {
     const [isLogin, setIsLogin] = useState(false)
     
     function login(user, pass) {
-        if (user === username && pass === password) setIsLogin(true)
-        else alert('username or password is wrong')
+      if (user === username && pass === password) {
+        setIsLogin(true)
+        return true
+      }
+      else {
+        alert('username or password is wrong')
+        return false
+      }
+        
     }    
 
     const contextValue = {

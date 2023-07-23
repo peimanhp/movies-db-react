@@ -21,7 +21,7 @@
 }
 
 body {
-  background-color: var(--main-bg-color);
+  background-color: var(--main-bg-color) !important;
   overflow-x: hidden;
 }
 
@@ -116,7 +116,7 @@ body {
 #menu {
   direction: rtl;
   background-color: black;
-  height: 80px;
+  
 }
 
 /* media queries */

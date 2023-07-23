@@ -1,18 +1,50 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { LoginContext } from "../context/LoginContext";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import Button from "react-bootstrap/Button";
+import MyModal from "./MyModal";
+import LoginForm from "./LoginForm";
+
 
 const NavBar = () => {
 
-  const Login = useContext(LoginContext)
-  console.log('islogin',Login)
+  const [showModal, setShowModal] = useState(false);
+
+  const Login = useContext(LoginContext)  
 
   return (
     <div id="menu">
-      {Login.isLogin ? (
-        <h1 className="bg-orange-700">پیمان خوش آمدید</h1>
-      ) : (
-        "لطفا وارد شوید"
-      )}
+      <Navbar bg="dark" data-bs-theme="dark">
+        <Container>
+          <Navbar.Brand href="/">فیلم خور</Navbar.Brand>
+          <Nav className="ms-auto">
+            <Nav.Link className="me-3" href="/">
+              خانه
+            </Nav.Link>
+          </Nav>
+          <Nav className="me-auto">
+            {Login.isLogin ? (
+              <Navbar.Text>پیمان خوش آمدی</Navbar.Text>
+            ) : (
+              <Button
+                onClick={() => setShowModal(true)}
+                variant="outline-light"
+              >
+                ورود
+              </Button>
+            )}
+          </Nav>
+        </Container>
+      </Navbar>
+      <MyModal
+        modalTitle={"ورود"}
+        showModal={showModal}
+        setShowModal={setShowModal}
+        modalForm={<LoginForm setShowModal={setShowModal} />}
+      />
+
       {/* <button className="bg-white" onClick={Login.login('admin', 'admin')}>login</button> */}
     </div>
   );
