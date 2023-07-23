@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import http from '../services/httpService';
-import NavBar from "./NavBar";
 import MovieSlider from "./MovieSlider";
 import MovieInfo from "./MovieInfo";
 
@@ -31,8 +30,7 @@ const Home = () => {
     }, []);
 
     return (
-      <>
-        <NavBar />
+      <>        
         <MovieSlider
           title={"فیلم های در حال اکران"}
           movies={nowPlayingMovies}

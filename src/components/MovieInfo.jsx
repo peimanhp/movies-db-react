@@ -10,13 +10,11 @@ function MovieInfo({ selectedMovie}) {
     >
       
         <div className="movie-details">
-          <h2>{selectedMovie.title || selectedMovie.name}</h2>
-          <br />
+          <h2>{selectedMovie.title || selectedMovie.name}</h2>          
           <h3>
             Rating: {selectedMovie.vote_average} ({selectedMovie.vote_count}{" "}
             votes)
-          </h3>
-          <br />
+          </h3>          
           <p>Summary: {selectedMovie.overview}</p>
         </div>
       <img
