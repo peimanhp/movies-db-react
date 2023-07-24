@@ -1,34 +1,34 @@
-import {createContext, useState} from 'react'
+import { createContext, useState } from "react";
 
 export const LoginContext = createContext({
-    login: () => { },
-})
+  login: () => {},
+});
 
 export function LoginProvider({ children }) {
-    const [username, setUsername] = useState('admin');
-    const [password, setPassword] = useState("admin");
-    const [isLogin, setIsLogin] = useState(false)
-    
-    function login(user, pass) {
-      if (user === username && pass === password) {
-        setIsLogin(true)
-        return true
-      }
-      else {
-        alert('username or password is wrong')
-        return false
-      }
-        
-    }    
+  const [username, setUsername] = useState("admin");
+  const [password, setPassword] = useState("admin");
+  const [isLogin, setIsLogin] = useState(false);
+  const [errorMsg, setErrorMsg] = useState(null);
 
-    const contextValue = {
-        login,
-        isLogin: isLogin,        
+  function login(user, pass) {
+    if (user === username && pass === password) {
+      setIsLogin(true);
+      return true;
+    } else {
+      setErrorMsg("نام کاربری یا رمز عبور اشتباه است");
+      return false;
     }
+  }
 
-    return (
-      <LoginContext.Provider value={contextValue}>
-        {children}
-      </LoginContext.Provider>
-    );
+  const contextValue = {
+    login,
+    isLogin,
+    errorMsg,
+  };
+
+  return (
+    <LoginContext.Provider value={contextValue}>
+      {children}
+    </LoginContext.Provider>
+  );
 }

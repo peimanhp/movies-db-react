@@ -43,9 +43,7 @@ const NavBar = () => {
         showModal={showModal}
         setShowModal={setShowModal}
         modalForm={<LoginForm setShowModal={setShowModal} />}
-      />
-
-      {/* <button className="bg-white" onClick={Login.login('admin', 'admin')}>login</button> */}
+      />      
     </div>
   );
 };
