@@ -41,7 +41,7 @@ const MovieSlider = (props) => {
   };
 
   return (
-    <div ref={srcollRef} className="movie-slider">
+    <div ref={srcollRef} className="m-5">
       <h1 className="slider-title">{props.title}</h1>
       <Carousel rtl={true} itemClass={"movie-cards"} responsive={responsive}>
         {props.movies.map((movie) => (
