@@ -102,18 +102,21 @@ body {
 }
 
 .movie-details h2 {
+  font-size: 1.5em;
   font-weight: 900;
-  font-size: 1.3em;
     margin-bottom: .5em;
 
 }
 
 .movie-details h3 {
+  font-size: 1em;
   font-weight: 800;
   margin-bottom: .5em;
 }
 
-
+.searchColor {
+  filter: invert(80%) sepia(39%) saturate(3212%) hue-rotate(354deg) brightness(105%) contrast(101%);
+}
 
 
 /* media queries */

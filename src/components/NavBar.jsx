@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { LoginContext } from "../context/LoginContext";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
@@ -6,19 +7,18 @@ import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/Button";
 import MyModal from "./MyModal";
 import LoginForm from "./LoginForm";
-import logo from "../images/logo.png"
-import Form from "react-bootstrap/Form";
+import logo from "../images/logo.png";
+import { BsSearch } from "react-icons/bs";
 
 const NavBar = () => {
-  const [showModal, setShowModal] = useState(false);
-
   const Login = useContext(LoginContext);
+  const [showModal, setShowModal] = useState(false); 
 
   return (
     <>
       <Navbar dir="rtl" expand="lg" className="mb-5 px-5" data-bs-theme="dark">
         <Container fluid>
-          <Navbar.Brand className="ps-4 m-0" href="/">
+          <Navbar.Brand as={Link} className="ps-4 m-0" to="/">
             <img src={logo} alt="logo" />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
@@ -28,19 +28,14 @@ const NavBar = () => {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-              <Nav.Link href="/">
+              <Nav.Link as={Link} to="/">
                 خانه
               </Nav.Link>
             </Nav>
             <Nav className="me-auto gap-3">
-              <Form className="d-flex gap-2">
-                <Form.Control
-                  type="search"
-                  placeholder="جستجو"
-                  aria-label="Search"
-                />
-                <Button variant="outline-warning">جستجو</Button>
-              </Form>
+              <Link to="/search" className="d-flex ms-4">
+                <BsSearch size="1.8em" fill="#FFC107" className="my-auto" />
+              </Link>
               {Login.isLogin ? (
                 <Navbar.Text>پیمان خوش آمدی</Navbar.Text>
               ) : (
@@ -55,7 +50,6 @@ const NavBar = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-
       <MyModal
         modalTitle={"ورود"}
         showModal={showModal}

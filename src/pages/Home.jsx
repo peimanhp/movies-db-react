@@ -9,6 +9,7 @@ const Home = () => {
   const [todaySeries, setTodaySeries] = useState([]);
   const [showMovieInfo, setShowMoviesInfo] = useState(false);
   const [selectedMovie, setSelectedMovie] = useState({});
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -22,7 +23,7 @@ const Home = () => {
         const popular = await http.get(`/3/movie/popular`);
         setPopularMovies(popular.data.results);
       } catch (error) {
-        console.log(error);
+        setError(error.message)
       }
     };
 
@@ -31,6 +32,7 @@ const Home = () => {
 
   return (
     <>
+      {error && <h1>{error}</h1>}
       <MovieSlider
         title={"فیلم های در حال اکران"}
         movies={nowPlayingMovies}

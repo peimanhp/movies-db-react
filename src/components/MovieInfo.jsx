@@ -9,7 +9,12 @@ function MovieInfo({ selectedMovie}) {
       // }}
     >
       <div className="movie-details">
-        <h2>{selectedMovie.title || selectedMovie.name}</h2>
+        <h2>
+          {selectedMovie.title || selectedMovie.name}{" "}
+          {selectedMovie.release_date
+            ? ` (${selectedMovie.release_date.slice(0, 4)})`
+            : null}
+        </h2>
         <h3>
           Rating: {selectedMovie.vote_average} ({selectedMovie.vote_count}{" "}
           votes)

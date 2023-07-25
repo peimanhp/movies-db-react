@@ -59,6 +59,7 @@ const MovieSlider = (props) => {
               alt={movie.title}
             />
             {movie.original_title || movie.original_name}
+            {(movie.release_date ? ` (${movie.release_date.slice(0, 4)})` : null)}
           </button>
         ))}
       </Carousel>
