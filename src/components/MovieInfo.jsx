@@ -3,11 +3,7 @@ import React from 'react'
 function MovieInfo({ selectedMovie}) {
   return (
     <div
-      className="movie-info-container"
-      // style={{
-      //   backgroundImage: `url(https://image.tmdb.org/t/p/original${selectedMovie.backdrop_path})`,
-      // }}
-    >
+      className="movie-info-container">
       <div className="movie-details">
         <h2>
           {selectedMovie.title || selectedMovie.name}{" "}

@@ -16,7 +16,7 @@ const NavBar = () => {
 
   return (
     <>
-      <Navbar dir="rtl" expand="lg" className="mb-5 px-5" data-bs-theme="dark">
+      <Navbar dir="rtl" expand="lg" className="px-5" data-bs-theme="dark">
         <Container fluid>
           <Navbar.Brand as={Link} className="ps-4 m-0" to="/">
             <img src={logo} alt="logo" />

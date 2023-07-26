@@ -6,11 +6,16 @@ import { useNavigate } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import MovieInfo from "../components/MovieInfo";
+import Movie from "./Movie";
 
 function Search() {
   const navigate = useNavigate();
   const [searchResults, setSearchResults] = useState([]);
   const [searchError, setSearchError] = useState(null);
+
+    const [showMovieInfo, setShowMoviesInfo] = useState(false);
+  const [selectedMovie, setSelectedMovie] = useState({});
 
   const handleSearch = async (e) => {
     navigate("/search", { replace: true });
@@ -24,6 +29,11 @@ function Search() {
     } catch (error) {
       setSearchError(error.message);
     }
+  };
+
+
+  const handleShowMovieInfo = (movie) => {
+    navigate(`/search/${movie.id}`, { replace: false }); 
   };
 
   return (
@@ -41,26 +51,31 @@ function Search() {
           <Button variant="outline-warning">جستجو</Button>
         </Form>
 
-        <Row xs={2} md={4} lg={6}>
+        <Row xs={2} md={4} lg={5}>
           {searchResults.map((movie) => (
-            <Col>
-              <Card key={movie.id} className="mb-4">
-                <Card.Img
-                  variant="top"
-                  src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-                />
-                <Card.Body>
-                  <Card.Title>
-                    {movie.original_title || movie.original_name}
-                    {movie.release_date
-                      ? ` (${movie.release_date.slice(0, 4)})`
-                      : null}
-                  </Card.Title>
-                </Card.Body>
-              </Card>
+            <Col key={movie.id}>
+              <button
+                onClick={() => handleShowMovieInfo(movie)}
+                className="border-0"
+              >
+                <Card className="mb-4 bg-dark">
+                  <Card.Img
+                    variant="top"
+                    src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                  />
+                  <Card.Body className="text-bg-dark">
+                    <Card.Title className="text-bg-dark fs-6">
+                      {movie.original_title || movie.original_name}
+                      {movie.release_date
+                        ? ` (${movie.release_date.slice(0, 4)})`
+                        : null}
+                    </Card.Title>
+                  </Card.Body>
+                </Card>
+              </button>
             </Col>
           ))}
-        </Row>
+        </Row>      
       </Container>
     </>
   );

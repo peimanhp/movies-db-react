@@ -48,9 +48,6 @@ body {
   margin-right: 0.5em;
 }
 
-/* .movie-slider {
-  margin: 3em;
-} */
 
 @keyframes wipe-in {
   from {
@@ -118,6 +115,24 @@ body {
   filter: invert(80%) sepia(39%) saturate(3212%) hue-rotate(354deg) brightness(105%) contrast(101%);
 }
 
+.movie-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: calc(100vh - 82px);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.movie-page-details {
+  border-radius: 1em;
+  padding: 3em;
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 45%;
+}
+
 
 /* media queries */
 
@@ -125,6 +140,9 @@ body {
   .movie-slider {
     margin: 0.5em;
   }
+  .movie-page-details {  
+  width: 80%;
+}
 }
 
 @media only screen and (max-width: 1200px) {
