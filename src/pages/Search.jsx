@@ -6,8 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import MovieInfo from "../components/MovieInfo";
-import Movie from "./Movie";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 function Search() {
   const navigate = useNavigate();
@@ -59,7 +58,7 @@ function Search() {
                 className="border-0"
               >
                 <Card className="mb-4 bg-dark">
-                  <Card.Img
+                  <Card.Img as={LazyLoadImage}
                     variant="top"
                     src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
                   />

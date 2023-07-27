@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import Carousel from "react-multi-carousel";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-multi-carousel/lib/styles.css";
 
 const responsive = {
@@ -53,13 +54,15 @@ const MovieSlider = (props) => {
             }}
             key={movie.id}
           >
-            <img
+            <LazyLoadImage
               className="posters"
               src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
               alt={movie.title}
+              effect="blur"
+              PlaceholderSrc={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
             />
             {movie.original_title || movie.original_name}
-            {(movie.release_date ? ` (${movie.release_date.slice(0, 4)})` : null)}
+            {movie.release_date ? ` (${movie.release_date.slice(0, 4)})` : null}
           </button>
         ))}
       </Carousel>
