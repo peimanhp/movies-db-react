@@ -116,9 +116,7 @@ body {
 }
 
 .movie-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  
   width: 100%;
   height: calc(100vh - 82px);
   background-repeat: no-repeat;
@@ -127,10 +125,9 @@ body {
 }
 
 .movie-page-details {
-  border-radius: 1em;
-  padding: 3em;
+  
   background-color: rgba(0, 0, 0, 0.7);
-  width: 45%;
+  
 }
 
 
@@ -140,9 +137,7 @@ body {
   .movie-slider {
     margin: 0.5em;
   }
-  .movie-page-details {  
-  width: 80%;
-}
+  
 }
 
 @media only screen and (max-width: 1200px) {

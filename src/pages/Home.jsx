@@ -44,7 +44,7 @@ const Home = () => {
         </div>
       ) : (
         <MovieSlider
-          title={"فیلم های در حال اکران"}
+          title={"فیلم های روی پرده"}
           movies={nowPlayingMovies}
           showMovieInfo={showMovieInfo}
           setShowMoviesInfo={setShowMoviesInfo}

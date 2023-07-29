@@ -49,8 +49,7 @@ const MovieSlider = (props) => {
           <button
             onClick={() => {
               handleScroll();
-              handleShowMovieInfo(movie);
-              console.log(movie);
+              handleShowMovieInfo(movie);              
             }}
             key={movie.id}
           >
