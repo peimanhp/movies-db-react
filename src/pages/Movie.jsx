@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import http from "../services/httpService";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Container, Row } from "react-bootstrap";
 import { Col } from "react-bootstrap";
-import { Card } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import MovieCard from "../components/MovieCard";
 
 function Movie() {
   const params = useParams();
   const [movie, setMovie] = useState({});
   const [similar, setSimilar] = useState({});
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -29,11 +26,6 @@ function Movie() {
 
     fetchMovies();
   }, [params.id]);
-
-  const handleShowMovieInfo = (movie) => {
-    console.log("clicked");
-    navigate(`/search/${movie.id}`, { replace: false });
-  };
 
   return (
     <div
@@ -59,28 +51,8 @@ function Movie() {
           {Object.entries(similar)
             .slice(0, 6)
             .map((similarMovie) => (
-              <Col key={similarMovie[1].id}>
-                <button
-                  onClick={() => handleShowMovieInfo(similarMovie[1])}
-                  className="border-0"
-                >
-                  <Card className="mb-4 bg-dark">
-                    <Card.Img
-                      as={LazyLoadImage}
-                      variant="top"
-                      src={`https://image.tmdb.org/t/p/original${similarMovie[1].poster_path}`}
-                    />
-                    <Card.Body className="text-bg-dark">
-                      <Card.Title className="text-bg-dark fs-6">
-                        {similarMovie[1].original_title ||
-                          similarMovie[1].original_name}
-                        {similarMovie[1].release_date
-                          ? ` (${similarMovie[1].release_date.slice(0, 4)})`
-                          : null}
-                      </Card.Title>
-                    </Card.Body>
-                  </Card>
-                </button>
+              <Col key={similarMovie[1].id}>                
+                <MovieCard movie={similarMovie[1]} />
               </Col>
             ))}
         </Row>
