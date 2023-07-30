@@ -1,9 +1,10 @@
 import React from 'react'
+import GetGenres from './GetGenres';
 
-function MovieInfo({ selectedMovie}) {
+function MovieInfo({ selectedMovie, genres }) {
+  
   return (
-    <div
-      className="movie-info-container">
+    <div className="movie-info-container">
       <div className="movie-details">
         <h2>
           {selectedMovie.title || selectedMovie.name}{" "}
@@ -15,7 +16,10 @@ function MovieInfo({ selectedMovie}) {
           Rating: {selectedMovie.vote_average} ({selectedMovie.vote_count}{" "}
           votes)
         </h3>
-        <p>Summary: {selectedMovie.overview}</p>
+        <GetGenres movie={selectedMovie} />
+        <p className="mt-2">
+          <b>Summary:</b> {selectedMovie.overview}
+        </p>
       </div>
       <img
         className="backdrop-image"

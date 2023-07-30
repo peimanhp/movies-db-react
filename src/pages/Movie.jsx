@@ -8,7 +8,7 @@ import MovieCard from "../components/MovieCard";
 function Movie() {
   const params = useParams();
   const [movie, setMovie] = useState({});
-  const [similar, setSimilar] = useState({});
+  const [similar, setSimilar] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ function Movie() {
 
     fetchMovies();
   }, [params.id]);
-
+  
   return (
     <div
       className="movie-page"
@@ -44,17 +44,17 @@ function Movie() {
           <h3>
             Rating: {movie.vote_average} ({movie.vote_count} votes)
           </h3>
-          <p>Summary: {movie.overview}</p>
+          <p>
+            <b>Summary:</b> {movie.overview}
+          </p>
         </div>
-        <h2 className="bg-dark p-2 text-center rounded-4">Similar Movies</h2>
+        <h2 className="bg-dark p-2 text-center rounded-4">عناوین مشابه</h2>
         <Row xs={2} md={3} lg={6}>
-          {Object.entries(similar)
-            .slice(0, 6)
-            .map((similarMovie) => (
-              <Col key={similarMovie[1].id}>                
-                <MovieCard movie={similarMovie[1]} />
-              </Col>
-            ))}
+          {similar.slice(0, 6).map((similarMovie) => (
+            <Col key={similarMovie.id}>
+              <MovieCard movie={similarMovie} />
+            </Col>
+          ))}
         </Row>
       </Container>
     </div>

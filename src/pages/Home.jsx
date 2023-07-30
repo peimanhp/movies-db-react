@@ -4,13 +4,12 @@ import MovieSlider from "../components/MovieSlider";
 import MovieInfo from "../components/MovieInfo";
 import Spinner from "react-bootstrap/Spinner";
 
-
 const Home = () => {
   const [nowPlayingMovies, setNowPlayingMovies] = useState([]);
   const [popularMovies, setPopularMovies] = useState([]);
   const [todaySeries, setTodaySeries] = useState([]);
   const [showMovieInfo, setShowMoviesInfo] = useState(false);
-  const [selectedMovie, setSelectedMovie] = useState({});
+  const [selectedMovie, setSelectedMovie] = useState({}); 
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -25,7 +24,8 @@ const Home = () => {
         setTodaySeries(airingToday.data.results);
 
         const popular = await http.get(`/3/movie/popular`);
-        setPopularMovies(popular.data.results);
+        setPopularMovies(popular.data.results);        
+
         setLoading(false);
       } catch (error) {
         setError(error.message);
@@ -49,7 +49,7 @@ const Home = () => {
           showMovieInfo={showMovieInfo}
           setShowMoviesInfo={setShowMoviesInfo}
           setSelectedMovie={setSelectedMovie}
-          selectedMovie={selectedMovie}          
+          selectedMovie={selectedMovie}
         />
       )}
       {showMovieInfo && nowPlayingMovies.includes(selectedMovie) ? (
