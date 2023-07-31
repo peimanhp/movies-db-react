@@ -115,8 +115,7 @@ body {
   filter: invert(80%) sepia(39%) saturate(3212%) hue-rotate(354deg) brightness(105%) contrast(101%);
 }
 
-.movie-page {
-  
+.movie-page {  
   width: 100%;
   height: calc(100vh - 82px);
   background-repeat: no-repeat;
@@ -124,10 +123,12 @@ body {
   background-position: center;
 }
 
-.movie-page-details {
-  
-  background-color: rgba(0, 0, 0, 0.7);
-  
+.movie-page-details {  
+  background-color: rgba(0, 0, 0, 0.7);  
+}
+
+.notfound {
+  height: calc(100vh - 82px);
 }
 
 

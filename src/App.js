@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Search from "./pages/Search";
 import Movie from "./pages/Movie";
 import Genres from "./pages/Genres";
+import NotFound from "./pages/NotFound";
 import "./index.css";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/search/:id" element={<Movie />} />
         <Route path="/search" element={<Search />} />
         <Route path="/genres/:name" element={<Genres />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </LoginProvider>
   );
