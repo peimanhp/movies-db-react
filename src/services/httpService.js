@@ -16,6 +16,6 @@ const http = {
   get: authAxios.get,
   post: authAxios.post,
   put: authAxios.put,
-  delete: authAxios.delete,  
+  delete: authAxios.delete,   
 };
 export default http;

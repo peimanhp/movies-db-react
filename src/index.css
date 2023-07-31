@@ -131,6 +131,13 @@ body {
   height: calc(100vh - 82px);
 }
 
+.header-banner {
+  display: flex;
+  align-items: center;
+  max-height: 600px;
+  object-fit: cover;
+}
+
 
 /* media queries */
 

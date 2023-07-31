@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import http from "../services/httpService";
 import MovieSlider from "../components/MovieSlider";
+import HeadSlider from "../components/HeadSlider";
 import MovieInfo from "../components/MovieInfo";
 import Spinner from "react-bootstrap/Spinner";
 
@@ -38,6 +39,7 @@ const Home = () => {
   return (
     <>
       {error && <h1>{error}</h1>}
+      <HeadSlider movies={nowPlayingMovies} />
       {loading ? (
         <div className="d-flex justify-content-center align-items-center">
           <Spinner animation="border" variant="warning" />
