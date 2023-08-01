@@ -7,6 +7,7 @@ import Spinner from "react-bootstrap/Spinner";
 
 const Home = () => {
   const [nowPlayingMovies, setNowPlayingMovies] = useState([]);
+  const [upcomingMovies, setUpcomingMovies] = useState([]);
   const [popularMovies, setPopularMovies] = useState([]);
   const [todaySeries, setTodaySeries] = useState([]);
   const [showMovieInfo, setShowMoviesInfo] = useState(false);
@@ -20,6 +21,9 @@ const Home = () => {
         setLoading(true);
         const nowPlaying = await http.get(`/3/movie/now_playing`);
         setNowPlayingMovies(nowPlaying.data.results);
+
+        const upcoming = await http.get(`/3/movie/upcoming`);
+        setUpcomingMovies(upcoming.data.results);
 
         const airingToday = await http.get(`3/tv/airing_today`);
         setTodaySeries(airingToday.data.results);
@@ -55,6 +59,17 @@ const Home = () => {
         />
       )}
       {showMovieInfo && nowPlayingMovies.includes(selectedMovie) ? (
+        <MovieInfo selectedMovie={selectedMovie} />
+      ) : null}
+      <MovieSlider
+        title={"به زودی"}
+        movies={upcomingMovies}
+        showMovieInfo={showMovieInfo}
+        setShowMoviesInfo={setShowMoviesInfo}
+        setSelectedMovie={setSelectedMovie}
+        selectedMovie={selectedMovie}
+      />
+      {showMovieInfo && upcomingMovies.includes(selectedMovie) ? (
         <MovieInfo selectedMovie={selectedMovie} />
       ) : null}
       <MovieSlider

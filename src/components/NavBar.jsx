@@ -12,7 +12,19 @@ import { BsSearch } from "react-icons/bs";
 
 const NavBar = () => {
   const Login = useContext(LoginContext);
+  const [searchIcon, setSerachIcon] = useState('/search')
   const [showModal, setShowModal] = useState(false); 
+  const navigate = useNavigate();
+
+  const handleSearchButton = () => {
+    if (searchIcon === "/search") {
+      setSerachIcon("/");
+      navigate('/search')      
+    } else {
+      setSerachIcon("/search");
+      navigate('/')      
+    }
+  }
 
   return (
     <>
@@ -33,9 +45,10 @@ const NavBar = () => {
               </Nav.Link>
             </Nav>
             <Nav className="me-auto gap-3">
-              <Link to="/search" className="d-flex ms-4">
+              <button onClick={handleSearchButton}>
                 <BsSearch size="1.8em" fill="#FFC107" className="my-auto" />
-              </Link>
+              </button>
+              
               {Login.isLogin ? (
                 <Navbar.Text>پیمان خوش آمدی</Navbar.Text>
               ) : (

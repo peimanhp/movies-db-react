@@ -178,6 +178,10 @@ footer {
   min-height: calc(100vh - 138px);
 }
 
+.magnifier {
+  transform: scale(8);
+}
+
 
 /* media queries */
 

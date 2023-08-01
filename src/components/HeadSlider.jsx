@@ -4,7 +4,6 @@ import "react-multi-carousel/lib/styles.css";
 import { useNavigate } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
 
-
 function HeadSlider({ movies }) {    
   const navigate = useNavigate();
   const [screenSize, setScreenSize] = useState(getCurrentDimension());
@@ -30,16 +29,13 @@ function HeadSlider({ movies }) {
     
     const handleShowMovieInfo = (movie) => {
       navigate(`/search/${movie.id}`, { replace: false });
-  }; 
-  
-  
+  };  
 
   return (
     <Carousel fade dir="rtl">
       {movies.map((movie) => (
-        <Carousel.Item>
+        <Carousel.Item key={movie.id}>
           <button
-            key={movie.id}
             onClick={() => {
               handleShowMovieInfo(movie);
             }}
