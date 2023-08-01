@@ -45,12 +45,17 @@ const MovieSlider = (props) => {
   return (
     <div ref={srcollRef} className="m-5">
       <h1 className="slider-title">{props.title}</h1>
-      <Carousel rtl={true} itemClass={"movie-cards"} responsive={responsive}>
+      <Carousel
+        rtl={true}
+        itemClass={"movie-cards"}
+        responsive={responsive}
+        centerMode={true}
+      >
         {props.movies.map((movie) => (
           <button
             onClick={() => {
               handleScroll();
-              handleShowMovieInfo(movie);              
+              handleShowMovieInfo(movie);
             }}
             key={movie.id}
           >

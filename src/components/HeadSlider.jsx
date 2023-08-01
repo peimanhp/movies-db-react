@@ -1,80 +1,67 @@
 import React , {useState, useEffect} from "react";
-import Carousel from "react-multi-carousel";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-multi-carousel/lib/styles.css";
 import { useNavigate } from "react-router-dom";
-// import http from "../services/httpService";
-
-function HeadSlider({ movies }) {
-    // const [moviesBanner, setMoviesBanner] = useState([]);
-    const navigate = useNavigate();
+import Carousel from "react-bootstrap/Carousel";
 
 
-//   useEffect(() => {
-//     const fetchImages = async () => {
-//       try {
-//          const paths = movies.map((movie) => `/3/movie/${movie.id}/images`);
-//           const backdrops = []
-//         for (const path of paths) {
-//             const result = await http.get(path)
-//             backdrops.push(result.data)
-//         }  
-//         setMoviesBanner(backdrops);       
-        
-//     } catch (error) {
-//         console.log(error);
-//     }
-// };
-// fetchImages();
-//   }, []);
+function HeadSlider({ movies }) {    
+  const navigate = useNavigate();
+  const [screenSize, setScreenSize] = useState(getCurrentDimension());
+  
+  function getCurrentDimension() {
+    return {
+      width: window.innerWidth,
+      height: window.innerHeight,
+    };
+  }
+  
+  useEffect(() => {
+    const updateDimension = () => {
+      setScreenSize(getCurrentDimension());
+    };
+    window.addEventListener("resize", updateDimension);
+
+    return () => {
+      window.removeEventListener("resize", updateDimension);
+    };
+  }, [screenSize]);
+
     
     const handleShowMovieInfo = (movie) => {
       navigate(`/search/${movie.id}`, { replace: false });
-    };
-
-
-  const responsive = {
-    superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 992 },
-      items: 1,
-      slidesToSlide: 1,
-    },
-    desktop: {
-      breakpoint: { max: 992, min: 783 },
-      items: 1,
-      slidesToSlide: 1,
-    },
-    tablet: {
-      breakpoint: { max: 783, min: 483 },
-      items: 1,
-      slidesToSlide: 1,
-    },
-    mobile: {
-      breakpoint: { max: 483, min: 0 },
-      items: 1,
-      slidesToSlide: 1,
-    },
-  };
+  }; 
+  
+  
 
   return (
-    <Carousel rtl={true} itemClass={"header-banner"} responsive={responsive}>
+    <Carousel fade dir="rtl">
       {movies.map((movie) => (
-        <button
-          onClick={() => {
-            handleShowMovieInfo(movie);
-          }}
-          key={movie.id}
-        >
-          <LazyLoadImage
-            className="posters"
-            src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}                 
-            alt={movie.title}
-            effect="blur"
-          />
-          {movie.original_title || movie.original_name}
-          {movie.release_date ? ` (${movie.release_date.slice(0, 4)})` : null}
-        </button>
+        <Carousel.Item>
+          <button
+            key={movie.id}
+            onClick={() => {
+              handleShowMovieInfo(movie);
+            }}
+          >
+            <LazyLoadImage
+              text="First slide"
+              className="head-slide"
+              src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+              alt={movie.title}
+              effect="blur"
+              height={screenSize.width > 900 ? "600px" : null}
+            />
+          </button>
+          <Carousel.Caption className="d-flex justify-content-center">
+            <h3 className="fs-1 silde-title">
+              {movie.original_title}
+              {movie.release_date
+                ? ` (${movie.release_date.slice(0, 4)})`
+                : null}
+            </h3>
+          </Carousel.Caption>
+        </Carousel.Item>
       ))}
     </Carousel>
   );

@@ -134,8 +134,45 @@ body {
 .header-banner {
   display: flex;
   align-items: center;
-  max-height: 600px;
   object-fit: cover;
+  max-height: 500px;
+}
+
+.slider-animation {
+    animation: fadeIn ease-in 1.5s;
+}
+
+.silde-title {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: .3em;
+  border-radius: .5em;
+  width: fit-content;  
+}
+
+.button-next {
+  transform: scaleX();
+}
+
+.carousel-inner {
+  position: relative !important;
+}
+
+.carousel-control-prev {
+  position: absolute;
+  right: 0;
+}
+
+.carousel-control-next {
+  position: absolute !important;
+  right: 85% !important;
+}
+
+.carousel-control-prev-icon {
+  transform: scaleX(-1);
+}
+
+.carousel-control-next-icon {
+  transform: scaleX(-1);
 }
 
 
@@ -149,6 +186,10 @@ body {
 }
 
 @media only screen and (max-width: 1200px) {
+
+  .silde-title {
+  background-color: rgba(0, 0, 0, 0.3);; 
+}
 
   .movie-details {
     margin: 0;
