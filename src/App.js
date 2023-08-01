@@ -7,18 +7,24 @@ import Movie from "./pages/Movie";
 import Genres from "./pages/Genres";
 import NotFound from "./pages/NotFound";
 import "./index.css";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <LoginProvider>
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/search/:id" element={<Movie />} />
-        <Route path="/search" element={<Search />} />
-        <Route path="/genres/:name" element={<Genres />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <div className="d-flex flex-column justify-content-between">
+        <div>
+          <NavBar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/search/:id" element={<Movie />} />
+            <Route path="/search" element={<Search />} />
+            <Route path="/genres/:name" element={<Genres />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
+        <Footer />
+      </div>
     </LoginProvider>
   );
 }

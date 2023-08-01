@@ -28,7 +28,7 @@ function Search() {
 
   return (
     <>
-      <Container>
+      <Container className="search-page">
         {searchError && <h1>{searchError}</h1>}
         <Form dir="rtl" className="d-flex gap-2 mb-5">
           <Form.Control

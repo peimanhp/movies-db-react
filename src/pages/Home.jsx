@@ -37,7 +37,7 @@ const Home = () => {
   }, []);
 
   return (
-    <>
+    <main className="home-wrapper">
       {error && <h1>{error}</h1>}
       <HeadSlider movies={nowPlayingMovies} />
       {loading ? (
@@ -79,7 +79,7 @@ const Home = () => {
       {showMovieInfo && popularMovies.includes(selectedMovie) ? (
         <MovieInfo selectedMovie={selectedMovie} />
       ) : null}
-    </>
+    </main>
   );
 };
 
