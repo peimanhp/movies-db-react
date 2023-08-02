@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { LoginProvider } from "./context/LoginContext";
 import NavBar from "./components/NavBar";
 import Home from "./pages/Home";
@@ -17,6 +17,7 @@ function App() {
           <NavBar />
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/movies-db-react" element={<Navigate to="/" replace />} />
             <Route path="/search/:id" element={<Movie />} />
             <Route path="/search" element={<Search />} />
             <Route path="/genres/:name" element={<Genres />} />
