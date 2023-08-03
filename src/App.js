@@ -17,7 +17,7 @@ function App() {
           <NavBar />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/movies-db-react" element={<Navigate to="/" replace />} />
+            {/* <Route path="/movies-db-react" element={<Navigate to="/" replace />} /> */}
             <Route path="/search/:id" element={<Movie />} />
             <Route path="/search" element={<Search />} />
             <Route path="/genres/:name" element={<Genres />} />
