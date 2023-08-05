@@ -1,3 +1,5 @@
+Dynamic Movie Database (fetches data from Api)
+
 <b>Note:</b> Since the country of Iran has been sanctioned by TMDB website. <b>You must use VPN</b> to view the site in Iran correctly!
 
 Live Demo: https://peimanhp.github.io/movies-db-react/
