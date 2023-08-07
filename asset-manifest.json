@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/movies-db-react/static/css/main.689c7e24.css",
-    "main.js": "/movies-db-react/static/js/main.f3e30962.js",
+    "main.js": "/movies-db-react/static/js/main.93509f6b.js",
     "static/media/IRANSansXV.woff2": "/movies-db-react/static/media/IRANSansXV.6db82f6b41218b738710.woff2",
     "static/media/logo.png": "/movies-db-react/static/media/logo.8991a640fc19e94ce562.png",
     "static/media/revicons.eot": "/movies-db-react/static/media/revicons.a77de540a38981833f9e.eot",
@@ -9,10 +9,10 @@
     "static/media/revicons.woff": "/movies-db-react/static/media/revicons.e8746a624ed098489406.woff",
     "index.html": "/movies-db-react/index.html",
     "main.689c7e24.css.map": "/movies-db-react/static/css/main.689c7e24.css.map",
-    "main.f3e30962.js.map": "/movies-db-react/static/js/main.f3e30962.js.map"
+    "main.93509f6b.js.map": "/movies-db-react/static/js/main.93509f6b.js.map"
   },
   "entrypoints": [
     "static/css/main.689c7e24.css",
-    "static/js/main.f3e30962.js"
+    "static/js/main.93509f6b.js"
   ]
 }
