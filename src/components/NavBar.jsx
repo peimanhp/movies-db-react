@@ -48,7 +48,7 @@ const NavBar = () => {
               <button onClick={handleSearchButton}>
                 <BsSearch size="1.8em" fill="#FFC107" className="my-auto" />
               </button>
-              
+
               {Login.isLogin ? (
                 <Navbar.Text>پیمان خوش آمدی</Navbar.Text>
               ) : (
@@ -68,7 +68,7 @@ const NavBar = () => {
         showModal={showModal}
         setShowModal={setShowModal}
         modalForm={<LoginForm setShowModal={setShowModal} />}
-      />
+      />      
     </>
   );
 };

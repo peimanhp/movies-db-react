@@ -6,7 +6,10 @@ function MyModal({ showModal, setShowModal, modalForm, modalTitle }) {
     <Modal
       size="sm"
       show={showModal}
-      onHide={() => setShowModal(false)}
+      onHide={() => {
+        setShowModal(false);
+        localStorage.setItem("seenPopUp", true);
+      }}
       aria-labelledby="example-modal-sizes-title-sm"
     >
       <Modal.Header className="text-bg-light" closeButton>
